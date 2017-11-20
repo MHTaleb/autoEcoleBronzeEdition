@@ -1,0 +1,7 @@
+Class of error : main.Main
+
+
+main.Main.main(Main.java:76)Class of error : main.Main
+
+
+main.Main.main(Main.java:76)

@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jpa:entity-mappings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:java="http://jcp.org/en/jsr/detail?id=270" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:jpa="http://java.sun.com/xml/ns/persistence/orm" pkg="entities" v="2.6" persistenceUnitName="AutoEcoleBronzzaPU" sm="false" smpkg="meta" xs="false" id="_1509542381318150" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm orm_2_1.xsd">
+    <jpa:entity xre="false" compositePrimaryKeyClass="EcolePK" abs="false" class="Ecole" visibile="true" gen="false" minimized="false" rootElement="_1509542381318150" id="_1509542381343151">
+        <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" visibile="true" name="nom" id="_1509542381344153">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" visibile="true" name="num" id="_1509542381344154">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" visibile="true" name="wilaya" id="_1509542381344155">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:element-collection target-class="java.lang.String" collection-type="java.util.List" visibile="true" name="moniteurs" id="_1509542381344156">
+                <jpa:bv/>
+            </jpa:element-collection>
+            <jpa:element-collection target-class="java.lang.String" collection-type="java.util.List" visibile="true" name="matricules" id="_1509542381346157">
+                <jpa:bv/>
+            </jpa:element-collection>
+            <jpa:id attribute-type="Long" visibile="true" name="id" id="_1509542381344152">
+                <jpa:bv/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity xre="false" compositePrimaryKeyClass="ExamenPK" abs="false" class="Examen" visibile="true" gen="false" minimized="false" rootElement="_1509542381318150" id="_1509542381363158">
+        <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="java.util.Date" visibile="true" name="dateExamen" id="_1509542381363162">
+                <jpa:bv/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </jpa:basic>
+            <jpa:one-to-one own="true" orp="false" optional="true" primaryKey="false" connected-entity-id="_1509542381477204" visibile="true" name="examinateur" id="_1509542381363163"/>
+            <jpa:id attribute-type="Long" visibile="true" name="id" id="_1509542381363159">
+                <jpa:bv/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity xre="false" compositePrimaryKeyClass="CoursPK" abs="false" class="Cours" visibile="true" gen="false" minimized="false" rootElement="_1509542381318150" id="_1509542381378164">
+        <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" visibile="true" name="dateCours" id="_1509542381378166">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" visibile="true" name="observation" id="_1509542381379167">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:one-to-one own="true" orp="false" optional="true" primaryKey="false" connected-entity-id="_1509542381408175" visibile="true" name="candidat" id="_1509542381379168"/>
+            <jpa:id attribute-type="Long" visibile="true" name="id" id="_1509542381378165">
+                <jpa:bv/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity lbl-ref="_1509542381393170" xre="false" compositePrimaryKeyClass="CandidatEtatExamenPK" abs="false" class="CandidatEtatExamen" visibile="true" minimized="false" rootElement="_1509542381318150" id="_1509542381393169">
+        <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="entities.CategorieExamens" visibile="true" name="typeExamen" id="_1509542381393171">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="entities.EtatExamen" visibile="true" name="etatExamen" id="_1509542381393172">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:one-to-one own="true" orp="false" optional="true" primaryKey="false" connected-entity-id="_1509542381363158" visibile="true" name="examen" id="_1509542381393173"/>
+            <jpa:one-to-one own="true" orp="false" optional="true" primaryKey="false" connected-entity-id="_1509542381408175" visibile="true" name="candidat" id="_1509542381393174"/>
+            <jpa:id attribute-type="Long" visibile="true" name="id" id="_1509542381393170">
+                <jpa:bv/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="true" name="CandidatEtatExamen.findByExam">
+            <jpa:query>SELECT e FROM CandidatEtatExamen e WHERE e.examen.id = :id</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:entity lbl-ref="_1509542381408176" xre="false" compositePrimaryKeyClass="CandidatPK" abs="false" class="Candidat" visibile="true" gen="false" minimized="false" rootElement="_1509542381318150" id="_1509542381408175">
+        <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
+        <jpa:attributes>
+            <jpa:one-to-many orp="false" own="true" collection-type="java.util.List" connected-entity-id="_1509542381453197" visibile="true" name="inscriptions" id="_1509542381410189"/>
+            <jpa:embedded connected-class-id="_1509542381410178" visibile="true" name="candidatInfo" id="_1509542381408177">
+                <jpa:bv/>
+            </jpa:embedded>
+            <jpa:id attribute-type="Long" visibile="true" name="id" id="_1509542381408176">
+                <jpa:bv/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq e="true" name="Candidat.findByName">
+            <jpa:query>Select e from Candidat e where e.candidatInfo.nom = :nom</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="true" name="Candidat.findByPrenom">
+            <jpa:query>Select e from Candidat e where e.candidatInfo.prenom = :prenom</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="true" name="Candidat.findByOccurence">
+            <jpa:query>Select e from Candidat e WHERE e.candidatInfo.nom = :nom AND e.candidatInfo.prenom = :prenom AND e.candidatInfo.dateNaissance = :dateNaissance</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:entity xre="false" compositePrimaryKeyClass="VersementPK" abs="false" class="Versement" visibile="true" gen="false" minimized="false" rootElement="_1509542381318150" id="_1509542381423190">
+        <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
+        <jpa:attributes>
+            <jpa:one-to-one own="true" orp="false" optional="true" primaryKey="false" connected-entity-id="_1509542381408175" visibile="true" name="candidat" id="_1509542381423192"/>
+            <jpa:id attribute-type="Long" visibile="true" name="id" id="_1509542381423191">
+                <jpa:bv/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity xre="false" compositePrimaryKeyClass="PhotoPK" abs="false" class="Photo" visibile="true" gen="false" minimized="false" rootElement="_1509542381318150" id="_1509542381437193">
+        <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="byte[]" visibile="true" name="image" id="_1509542381437195">
+                <jpa:bv/>
+                <jpa:lob/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" visibile="true" name="ext" id="_1509542381437196">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:id attribute-type="Long" visibile="true" name="id" id="_1509542381437194">
+                <jpa:bv/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity xre="false" compositePrimaryKeyClass="InscriptionPK" abs="false" class="Inscription" visibile="true" gen="false" minimized="false" rootElement="_1509542381318150" id="_1509542381453197">
+        <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="entities.CategoriePermis" visibile="true" name="categoriePermis" id="_1509542381453199">
+                <jpa:bv/>
+                <jpa:enumerated>STRING</jpa:enumerated>
+            </jpa:basic>
+            <jpa:basic attribute-type="java.util.Date" visibile="true" name="dateInscription" id="_1509542381453200">
+                <jpa:bv/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </jpa:basic>
+            <jpa:id attribute-type="Long" visibile="true" name="id" id="_1509542381453198">
+                <jpa:bv/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity xre="false" compositePrimaryKeyClass="PrintablePK" abs="false" class="Printable" visibile="true" gen="false" minimized="false" rootElement="_1509542381318150" id="_1509542381463201">
+        <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="Long" visibile="true" name="printID" id="_1509542381463203">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:id attribute-type="Long" visibile="true" name="id" id="_1509542381463202">
+                <jpa:bv/>
+            </jpa:id>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity xre="false" compositePrimaryKeyClass="ExaminateurPK" abs="false" class="Examinateur" visibile="true" gen="false" minimized="false" rootElement="_1509542381318150" id="_1509542381477204">
+        <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
+        <jpa:attributes>
+            <jpa:embedded connected-class-id="_1509542381410178" visibile="true" name="examinateurInfo" id="_1509542381477206">
+                <jpa:bv/>
+            </jpa:embedded>
+            <jpa:id attribute-type="Long" visibile="true" name="id" id="_1509542381477205">
+                <jpa:bv/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:embeddable abs="false" class="CandidatInfo" visibile="true" gen="false" minimized="false" rootElement="_1509542381318150" id="_1509542381410178">
+        <jpa:ts e="true"/>
+        <jpa:hc e="true"/>
+        <jpa:eq e="true"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" visibile="true" name="nom" id="_1509542381410179">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" visibile="true" name="prenom" id="_1509542381410180">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="java.util.Date" visibile="true" name="dateNaissance" id="_1509542381410181">
+                <jpa:bv/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" visibile="true" name="lieuNaissance" id="_1509542381410182">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" visibile="true" name="numeroTelephone" id="_1509542381410183">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" visibile="true" name="nationalite" id="_1509542381410184">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" visibile="true" name="adresse" id="_1509542381410185">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" visibile="true" name="nomPere" id="_1509542381410186">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" visibile="true" name="nomMere" id="_1509542381410187">
+                <jpa:bv/>
+            </jpa:basic>
+            <jpa:one-to-one own="true" orp="false" optional="true" primaryKey="false" connected-entity-id="_1509542381437193" visibile="true" name="photo" id="_1509542381410188"/>
+        </jpa:attributes>
+    </jpa:embeddable>
+    <jpa:snp e="true" loc="BEFORE_PACKAGE">/**
+ * This file was generated by the JPA Modeler
+ */</jpa:snp>
+    <jpa:c/>
+    <jpa:diagram>
+        <plane elementRef="_1509542381318150">
+            <shape elementRef="_1509542381343151">
+                <Bounds x="1482.0" y="496.0" width="128.0" height="176.0"/>
+            </shape>
+            <shape elementRef="_1509542381363158">
+                <Bounds x="233.0" y="57.0" width="142.0" height="126.0"/>
+            </shape>
+            <shape elementRef="_1509542381378164">
+                <Bounds x="32.0" y="264.0" width="130.0" height="147.0"/>
+            </shape>
+            <shape elementRef="_1509542381393169">
+                <Bounds x="655.0" y="198.0" width="214.0" height="168.0"/>
+            </shape>
+            <shape elementRef="_1509542381408175">
+                <Bounds x="299.0" y="462.0" width="146.0" height="126.0"/>
+            </shape>
+            <shape elementRef="_1509542381423190">
+                <Bounds x="445.0" y="653.0" width="159.0" height="92.0"/>
+            </shape>
+            <shape elementRef="_1509542381437193">
+                <Bounds x="995.0" y="643.0" width="129.0" height="113.0"/>
+            </shape>
+            <shape elementRef="_1509542381453197">
+                <Bounds x="77.0" y="632.0" width="156.0" height="113.0"/>
+            </shape>
+            <shape elementRef="_1509542381463201">
+                <Bounds x="1207.0" y="496.0" width="147.0" height="92.0"/>
+            </shape>
+            <shape elementRef="_1509542381477204">
+                <Bounds x="933.0" y="319.0" width="168.0" height="92.0"/>
+            </shape>
+            <shape elementRef="_1509542381410178">
+                <Bounds x="698.0" y="439.0" width="171.0" height="260.0"/>
+            </shape>
+        </plane>
+    </jpa:diagram>
+</jpa:entity-mappings>
